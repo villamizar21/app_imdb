@@ -1,6 +1,6 @@
 package com.example.proyect_imdb.data.remote
 
-import com.example.proyect_imdb.ConstValues
+import com.example.proyect_imdb.util.ConstValues
 import com.example.proyect_imdb.data.model.MovieDetail
 import com.example.proyect_imdb.data.model.MovieModel
 import retrofit2.http.GET

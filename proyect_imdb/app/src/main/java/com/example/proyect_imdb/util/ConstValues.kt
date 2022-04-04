@@ -1,4 +1,4 @@
-package com.example.proyect_imdb
+package com.example.proyect_imdb.util
 
 object ConstValues {
 

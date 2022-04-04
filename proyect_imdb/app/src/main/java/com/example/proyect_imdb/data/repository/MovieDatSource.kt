@@ -1,7 +1,7 @@
 package com.example.proyect_imdb.data.repository
 
 import androidx.paging.PagingSource
-import com.example.proyect_imdb.ConstValues.API_KEY
+import com.example.proyect_imdb.util.ConstValues.API_KEY
 import com.example.proyect_imdb.data.model.MovieResults
 import com.example.proyect_imdb.data.remote.ApiService
 import java.lang.Exception

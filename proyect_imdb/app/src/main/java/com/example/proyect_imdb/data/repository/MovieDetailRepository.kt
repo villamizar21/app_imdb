@@ -1,7 +1,6 @@
 package com.example.proyect_imdb.data.repository
 
-import android.graphics.Movie
-import com.example.proyect_imdb.ConstValues.API_KEY
+import com.example.proyect_imdb.util.ConstValues.API_KEY
 import com.example.proyect_imdb.data.remote.ApiService
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.flow
