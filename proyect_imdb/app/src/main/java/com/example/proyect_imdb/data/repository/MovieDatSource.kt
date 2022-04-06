@@ -14,7 +14,7 @@ class MovieDatSource @Inject constructor(private val api: ApiService) :
             val nextPage = params.key ?: 1
             val response = api.getMovies(API_KEY, nextPage)
             val responseData = mutableListOf<MovieResults>()
-            val data = response.results ?: emptyList()
+            val data = response.results
             responseData.addAll(data)
 
             val prevKey = if (nextPage == 1) null else nextPage - 1
