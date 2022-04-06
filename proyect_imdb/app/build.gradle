@@ -2,15 +2,16 @@ plugins {
     id 'com.android.application'
     id 'kotlin-android'
     id 'kotlin-kapt'
+    id 'dagger.hilt.android.plugin'
 }
 
 android {
-    compileSdk 32
+    compileSdk 31
 
     defaultConfig {
         applicationId "com.example.proyect_imdb"
         minSdk 22
-        targetSdk 32
+        targetSdk 31
         versionCode 1
         versionName "1.0"
 
@@ -76,7 +77,6 @@ dependencies {
     implementation "com.google.dagger:hilt-android:2.40.5"
     kapt "com.google.dagger:hilt-android-compiler:2.40.5"
     implementation 'androidx.hilt:hilt-lifecycle-viewmodel:1.0.0-alpha03'
-    kapt 'androidx.hilt:hilt-compiler:1.0.0-alpha02'
 
     //kotlinx.coroutines
     implementation "org.jetbrains.kotlinx:kotlinx-coroutines-core:$coroutines_version"
@@ -85,10 +85,6 @@ dependencies {
 
     //paging
     implementation "androidx.paging:paging-runtime:$paging_version"
-
-
-    //recyclerview
-    implementation "androidx.recyclerview:recyclerview:1.1.0"
 
     //Gson Converter
     implementation 'com.squareup.retrofit2:converter-gson:2.9.0'
