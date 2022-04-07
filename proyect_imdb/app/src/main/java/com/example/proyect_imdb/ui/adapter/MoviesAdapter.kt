@@ -1,7 +1,9 @@
 package com.example.proyect_imdb.ui.adapter
 
+import android.annotation.SuppressLint
 import android.util.Log
 import android.view.LayoutInflater
+import android.view.View
 import android.view.ViewGroup
 import androidx.paging.PagingDataAdapter
 import androidx.recyclerview.widget.DiffUtil
@@ -10,39 +12,34 @@ import com.bumptech.glide.Glide
 import com.example.proyect_imdb.R
 import com.example.proyect_imdb.data.model.MovieResults
 import com.example.proyect_imdb.databinding.ItemMoviesBinding
+import com.example.proyect_imdb.ui.ClickListener
 import com.example.proyect_imdb.util.ConstValues.IMAGE_URL
 
 class MoviesAdapter(private val listener: ClickListener) :
-    PagingDataAdapter<MovieResults, MoviesAdapter.HomeViewHolder>(MovieDiff) {
+    PagingDataAdapter<MovieResults, MoviesAdapter.ViewHolder>(MovieDiff) {
 
     private lateinit var recyclerView: RecyclerView
 
-    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): HomeViewHolder {
-        return HomeViewHolder(
-            ItemMoviesBinding.inflate(
-                LayoutInflater.from(parent.context),
-                parent,
-                false
-            )
+    class ViewHolder(view: View) : RecyclerView.ViewHolder(view)
+
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
+        return ViewHolder(
+            LayoutInflater.from(parent.context)
+                .inflate(R.layout.item_movies, parent, false)
         )
     }
-
-    override fun onBindViewHolder(holder: HomeViewHolder, position: Int) {
-       holder.itemView.setOnClickListener {
-           listener.clicked(getItem(position)?.id)
-       }
-        Glide.with(holder.itemView).load(IMAGE_URL+getItem(position)?.posterpaht)
-            .into(holder.itemView.findViewById(R.id.imageViewMovie))
-        
+    override fun onBindViewHolder(holder: ViewHolder, position: Int) {
+        holder.itemView.setOnClickListener {
+            listener.clicked(getItem(position)?.id)
+        }
+        Glide.with(holder.itemView).load(IMAGE_URL + getItem(position)?.posterpaht)
+            .into(holder.itemView.findViewById(R.id.movie_poster))
     }
 
     override fun onAttachedToRecyclerView(recyclerView: RecyclerView) {
         super.onAttachedToRecyclerView(recyclerView)
         this.recyclerView = recyclerView
     }
-
-    class HomeViewHolder(private val binding: ItemMoviesBinding) :
-        RecyclerView.ViewHolder(binding.root) {}
 
     object MovieDiff : DiffUtil.ItemCallback<MovieResults>() {
         override fun areItemsTheSame(oldItem: MovieResults, newItem: MovieResults): Boolean =
@@ -51,9 +48,5 @@ class MoviesAdapter(private val listener: ClickListener) :
         override fun areContentsTheSame(oldItem: MovieResults, newItem: MovieResults): Boolean =
             newItem == oldItem
     }
-}
-
-interface ClickListener {
-    fun clicked(value: Int?)
 }
 
