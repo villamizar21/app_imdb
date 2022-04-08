@@ -51,7 +51,11 @@ class MoviesFragment : Fragment(), ClickListener {
     }
 
     private fun setAdapter() {
-        val layoutManager = GridLayoutManager(context, 2)
+        val  layoutManager = if(resources.getBoolean(R.bool.isTablet)) {
+            GridLayoutManager(context, 4)
+        }else
+            GridLayoutManager(context, 2)
+
         binding.recyclerView.layoutManager = layoutManager
         binding.recyclerView.setHasFixedSize(true)
         binding.recyclerView.adapter = moviesAdapter
