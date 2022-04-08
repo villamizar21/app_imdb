@@ -16,7 +16,7 @@ class MoviesViewModel @Inject constructor(private val api: ApiService) : ViewMod
     private var pagingSource: MovieDatSource? = null
 
     /**Si se necesita mas paginas se agregan aqui**/
-    val flow = Pager(PagingConfig(pageSize = 0)) {
+    val flow = Pager(PagingConfig(pageSize = 20)) {
         MovieDatSource(api).also {
             pagingSource = it
         }

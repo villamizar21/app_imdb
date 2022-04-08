@@ -15,10 +15,11 @@ interface ApiService {
         @Query("page") page: Int
     ):MovieModel
 
-    @GET("movie{movie_id}")
+    @GET("movie/{movie_id}")
     suspend fun getMovie(
         @Path("movie_id") movieId: Long,
         @Query("api_key") apiKey: String = ConstValues.API_KEY,
+        @Query("language") language:String
     ): MovieDetail
 
     @GET("search/movie")
