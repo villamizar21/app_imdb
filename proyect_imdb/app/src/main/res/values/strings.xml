@@ -6,4 +6,5 @@
     <string name="movie_vote_count">vote count</string>
     <string name="movie_date">movie date</string>
     <string name="movie_popularity">movie popularity</string>
+    <string name="label">Buscar</string>
 </resources>
