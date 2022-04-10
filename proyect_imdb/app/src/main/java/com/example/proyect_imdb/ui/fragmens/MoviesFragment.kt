@@ -108,6 +108,5 @@ class MoviesFragment : Fragment(), ClickListener {
     }
 
     override fun favoriteClick(value: Long?) {
-
     }
 }

@@ -40,12 +40,7 @@ class MainActivity : AppCompatActivity() {
         binding.draweLayout.addDrawerListener(toogle)
         toogle.syncState()
 
-        val drawerLayout: DrawerLayout = binding.draweLayout
-        val navView: NavigationView = binding.navView
-
         supportActionBar?.setDisplayHomeAsUpEnabled(true)
-
-
 
         binding.navView.setNavigationItemSelectedListener {
             when (it.itemId) {

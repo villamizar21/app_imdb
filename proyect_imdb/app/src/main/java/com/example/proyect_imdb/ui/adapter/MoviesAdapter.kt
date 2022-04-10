@@ -1,17 +1,17 @@
 package com.example.proyect_imdb.ui.adapter
 
-import android.annotation.SuppressLint
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.CheckBox
+import android.widget.ProgressBar
+import android.widget.TextView
 import androidx.paging.PagingDataAdapter
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.example.proyect_imdb.R
 import com.example.proyect_imdb.data.model.MovieResults
-import com.example.proyect_imdb.databinding.ItemMoviesBinding
 import com.example.proyect_imdb.ui.ClickListener
 import com.example.proyect_imdb.util.ConstValues.IMAGE_URL
 
@@ -19,6 +19,7 @@ class MoviesAdapter(private val listener: ClickListener) :
     PagingDataAdapter<MovieResults, MoviesAdapter.ViewHolder>(MovieDiff) {
 
     private lateinit var recyclerView: RecyclerView
+    private lateinit var list:MovieResults
 
     class ViewHolder(view: View) : RecyclerView.ViewHolder(view)
 
@@ -32,8 +33,16 @@ class MoviesAdapter(private val listener: ClickListener) :
         holder.itemView.setOnClickListener {
             listener.clicked(getItem(position)?.id)
         }
+        holder.itemView.findViewById<CheckBox>(R.id.cbFavorite).setOnClickListener {
+            //listener.favoriteClick(getItem(position)?.id)
+        }
         Glide.with(holder.itemView).load(IMAGE_URL + getItem(position)?.posterpaht)
             .into(holder.itemView.findViewById(R.id.movie_poster))
+
+
+        holder.itemView.findViewById<ProgressBar>(R.id.progress_vote).progress = getItem(position)?.voteAverage!!.toInt()
+
+        holder.itemView.findViewById<TextView>(R.id.titleMovie).text = getItem(position)?.title
     }
 
     override fun onAttachedToRecyclerView(recyclerView: RecyclerView) {
