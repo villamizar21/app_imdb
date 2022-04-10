@@ -7,4 +7,9 @@
     <string name="movie_date">movie date</string>
     <string name="movie_popularity">movie popularity</string>
     <string name="label">Buscar</string>
+    <string name="open_drawer">Open</string>
+    <string name="close_drawer">Close</string>
+    <string name="menu_de_navegacion">Menu de navegacion</string>
+
+
 </resources>

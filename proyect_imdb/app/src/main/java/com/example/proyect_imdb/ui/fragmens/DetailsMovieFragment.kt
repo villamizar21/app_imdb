@@ -36,8 +36,6 @@ class DetailsMovieFragment : Fragment() {
         val backdrop = binding.imageViewBackdropPath
         val movieId = arguments?.getLong(MOVIE_ID) ?: 0
 
-        Log.e("", "epa mlp llege algo---------------------> $movieId")
-
         if (movieId == 0L)
             errorOperation()
 

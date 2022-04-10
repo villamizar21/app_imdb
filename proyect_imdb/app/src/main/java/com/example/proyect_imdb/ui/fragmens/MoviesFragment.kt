@@ -7,12 +7,8 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.view.inputmethod.EditorInfo
-import android.widget.TextView
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.lifecycleScope
-import androidx.navigation.fragment.findNavController
-import androidx.paging.PagingData
 import androidx.recyclerview.widget.GridLayoutManager
 import com.example.proyect_imdb.util.hideKeyboard
 import com.example.proyect_imdb.R
@@ -34,6 +30,7 @@ class MoviesFragment : Fragment(), ClickListener {
     private var moviesAdapter: MoviesAdapter = MoviesAdapter(this)
     private val moviesViewModel: MoviesViewModel by viewModels()
     private val searchViewModel: SearchViewModel by viewModels()
+    private lateinit var fragment: Fragment
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -51,9 +48,9 @@ class MoviesFragment : Fragment(), ClickListener {
     }
 
     private fun setAdapter() {
-        val  layoutManager = if(resources.getBoolean(R.bool.isTablet)) {
+        val layoutManager = if (resources.getBoolean(R.bool.isTablet)) {
             GridLayoutManager(context, 4)
-        }else
+        } else
             GridLayoutManager(context, 2)
 
         binding.recyclerView.layoutManager = layoutManager
@@ -73,6 +70,7 @@ class MoviesFragment : Fragment(), ClickListener {
         binding.buscar.addTextChangedListener(object : TextWatcher {
             override fun beforeTextChanged(p0: CharSequence?, p1: Int, p2: Int, p3: Int) {
             }
+
             override fun onTextChanged(p0: CharSequence?, p1: Int, p2: Int, p3: Int) {
 
                 if (p0!!.isEmpty()) {
@@ -82,6 +80,7 @@ class MoviesFragment : Fragment(), ClickListener {
                     gettingDataSearch(binding.buscar.text.toString())
                 }
             }
+
             override fun afterTextChanged(p0: Editable?) {
             }
         })
@@ -98,6 +97,17 @@ class MoviesFragment : Fragment(), ClickListener {
     override fun clicked(value: Long?) {
         val movieId = Bundle()
         movieId.putLong(MOVIE_ID, value ?: 0)
-        findNavController().navigate(R.id.action_moviesFragment_to_detailsMovieFragment, movieId)
+        fragment = DetailsMovieFragment()
+        fragment.arguments = movieId
+        activity!!.supportFragmentManager.beginTransaction().apply {
+            replace(R.id.container_fragment, fragment)
+            addToBackStack(null)
+            commit()
+        }
+
+    }
+
+    override fun favoriteClick(value: Long?) {
+
     }
 }

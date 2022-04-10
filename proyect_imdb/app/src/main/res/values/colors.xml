@@ -13,4 +13,5 @@
     <color name="colorPrimaryDark">#0031CA</color>
     <color name="colorTextWhite">#FFFFFF</color>
     <color name="colorTextBlack">#000000</color>
+    <color name="colorCheckBox">#F10606</color>
 </resources>

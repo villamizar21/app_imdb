@@ -3,7 +3,6 @@ package com.example.proyect_imdb.data.database
 import androidx.room.Database
 import androidx.room.RoomDatabase
 import com.example.proyect_imdb.data.dao.MovieDao
-import com.example.proyect_imdb.data.model.MovieModel
 import com.example.proyect_imdb.data.model.MoviesResponse
 import com.example.proyect_imdb.di.ApplicationScope
 import kotlinx.coroutines.CoroutineScope

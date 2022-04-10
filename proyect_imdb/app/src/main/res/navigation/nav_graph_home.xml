@@ -8,14 +8,16 @@
     <fragment
         android:id="@+id/moviesFragment"
         android:name="com.example.proyect_imdb.ui.fragmens.MoviesFragment"
-        android:label="fragment_movies" >
-        <action
-            android:id="@+id/action_moviesFragment_to_detailsMovieFragment"
-            app:destination="@id/detailsMovieFragment" />
-    </fragment>
+        android:label="fragment_movies"
+        tools:layout="@layout/fragment_movies"/>
     <fragment
         android:id="@+id/detailsMovieFragment"
         android:name="com.example.proyect_imdb.ui.fragmens.DetailsMovieFragment"
         android:label="fragment_details_movie"
         tools:layout="@layout/fragment_details_movie" />
+    <fragment
+        android:id="@+id/moviesFavoritesFragment"
+        android:name="com.example.proyect_imdb.ui.fragmens.MoviesFavoritesFragment"
+        android:label="fragment_movies_favorites"
+        tools:layout="@layout/fragment_movies_favorites" />
 </navigation>
