@@ -43,6 +43,9 @@ class MoviesAdapter(private val listener: ClickListener) :
         holder.itemView.findViewById<ProgressBar>(R.id.progress_vote).progress = getItem(position)?.voteAverage!!.toInt()
 
         holder.itemView.findViewById<TextView>(R.id.titleMovie).text = getItem(position)?.title
+
+        holder.itemView.findViewById<TextView>(R.id.vote_average).text = getItem(position)?.voteAverage.toString()
+
     }
 
     override fun onAttachedToRecyclerView(recyclerView: RecyclerView) {
